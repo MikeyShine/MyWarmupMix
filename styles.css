@@ -56,11 +56,14 @@ nav { display: flex; flex-direction: column; align-items: center; justify-conten
 .mix-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: transform 0.15s, border-color 0.15s; position: relative; }
 .mix-card:hover { transform: translateY(-3px); border-color: var(--border2); }
 .mix-card.now-playing { border-color: var(--accent); }
-.mix-art { aspect-ratio: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-size: cover; background-position: center; }
+.mix-art { aspect-ratio: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-size: contain; background-repeat: no-repeat; background-position: center; }
 .mix-art-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1; }
 .mix-art-icon { font-size: 3.5rem; line-height: 1; }
 .mix-art-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center; padding: 0 12px; }
-.mix-art-vol { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 3rem; font-weight: 900; color: var(--accent); letter-spacing: -2px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); line-height: 1; z-index: 2; }
+.mix-art-vol { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; z-index: 2; }
+.mix-art-vol-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.9); }
+.mix-art-vol-num { font-size: 2.2rem; font-weight: 900; color: #fff; letter-spacing: -1px; text-shadow: 0 2px 20px rgba(0,0,0,0.9); line-height: 1; }
+.mix-art-title-overlay { position: absolute; bottom: 16px; left: 12px; right: 12px; text-align: center; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.9); z-index: 2; line-height: 1.3; }
 .mix-play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
 .mix-card:hover .mix-play-overlay { opacity: 1; }
 .play-circle { width: 52px; height: 52px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
@@ -190,7 +193,7 @@ nav { display: flex; flex-direction: column; align-items: center; justify-conten
 .overlay.open .product-modal { transform: translateY(0); }
 .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(0,0,0,0.45); border: 1px solid var(--border2); color: var(--text); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 10; }
 .modal-close:hover { background: rgba(0,0,0,0.7); }
-.modal-art { aspect-ratio: 2.4/1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.modal-art { aspect-ratio: 2.4/1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-size: cover; background-position: center; }
 .modal-art-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .modal-art-sub { font-size: 12px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
 .modal-body { padding: 1.75rem; }
