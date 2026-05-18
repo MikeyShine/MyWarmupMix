@@ -275,8 +275,12 @@
   .secure-note { text-align: center; font-size: 11px; color: var(--text3); margin-top: 10px; }
   footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text3); font-size: 13px; }
   footer a { color: var(--text3); text-decoration: underline; cursor: pointer; }
-  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg3); border: 1px solid var(--border2); color: var(--text); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; z-index: 9999; transition: transform 0.3s; white-space: nowrap; pointer-events: none; }
-  .toast.show { transform: translateX(-50%) translateY(0); }
+  @media (max-width: 768px) {
+    nav { padding: 0.75rem 1rem; gap: 6px; }
+    .logo img { height: 70px; }
+    .nav-links { gap: 0.9rem; }
+    .nav-links a { font-size: 12px; }
+  }
 </style>
 </head>
 <body>
@@ -287,7 +291,7 @@
   </div>
   <div class="nav-links">
     <a id="nav-home" onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Shop Mixes</a>
-    <a id="nav-custom" onclick="showPage('custom')">Custom Mix</a>
+    <a id="nav-custom" onclick="showPage('custom')">Custom Mixes</a>
     <a id="nav-about" onclick="showPage('about')">About</a>
     <a id="nav-contact" onclick="showPage('contact')">Contact</a>
     <a id="nav-faq" onclick="showPage('faq')">FAQ</a>
