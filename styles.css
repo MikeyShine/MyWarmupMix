@@ -125,7 +125,7 @@ nav { display: flex; flex-direction: column; align-items: center; justify-conten
 
 /* ABOUT */
 .about-hero { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; margin-bottom: 2rem; text-align: center; }
-.about-hero h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; line-height: 1.15; }
+.about-hero h2 { font-size: clamp(2rem, 5vw, 2.4rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; line-height: 1.15; }
 .about-hero p { font-size: 15px; color: var(--text2); max-width: 480px; margin: 0 auto; }
 .about-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 2rem 0; }
 .pillar { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
