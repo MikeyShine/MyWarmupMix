@@ -51,7 +51,7 @@
     --radius: 10px; --radius-lg: 14px;
   }
   body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
-  nav { display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 120px; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+  nav { display: flex; align-items: center; justify-content: center; padding: 0 2rem; height: 140px; border-bottom: 1px solid var(--border); background: #000000; position: sticky; top: 0; z-index: 100; }
   .logo { font-size: 52px; font-weight: 800; letter-spacing: -2px; cursor: pointer; display: flex; align-items: center; gap: 12px; }
   .nav-links { display: flex; gap: 1.5rem; align-items: center; }
   .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.15s; }
@@ -287,7 +287,7 @@
 
 <nav>
   <div class="logo" onclick="showPage('home')" style="display:flex;align-items:center;cursor:pointer;">
-    <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:100px;width:auto;">
+    <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:120px;width:auto;">
   </div>
   <div class="nav-links">
     <a onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Browse</a>
