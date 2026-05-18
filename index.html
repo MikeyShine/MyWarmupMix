@@ -41,10 +41,10 @@
   body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
 
   /* NAV */
-  nav { display: flex; align-items: flex-end; justify-content: space-between; padding: 1rem 4rem 1rem; border-bottom: 1px solid var(--border); background: #000; position: sticky; top: 0; z-index: 100; }
+  nav { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem 2rem 0.75rem; border-bottom: 1px solid var(--border); background: #000; position: sticky; top: 0; z-index: 100; gap: 8px; }
   .logo { cursor: pointer; }
   .logo img { height: 110px; width: auto; display: block; }
-  .nav-links { display: flex; gap: 1.5rem; align-items: center; padding-bottom: 10px; }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
   .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.15s; }
   .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--accent) !important; color: #000 !important; padding: 6px 16px; border-radius: 6px; font-weight: 600; font-size: 13px !important; }
