@@ -51,8 +51,42 @@ var FAQS = [
   { q:'Do you offer refunds?', a:'Due to the digital nature of our products, all sales are final once a download link has been delivered. If you experience a technical issue that prevents you from accessing your file, contact us within 7 days and we\'ll resolve it.' }
 ];
 
+// ── Audio URLs ────────────────────────────────────────────────────────────────
+var MIX_URL       = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/Warm-Up%20Mix%20Vol1.mp3';
+var WATERMARK_URL = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/MyWarmUpMix.mp3';
+var WATERMARK_INTERVAL = 60;   // seconds between watermark hits
+var WATERMARK_VOLUME   = 0.45; // relative to mix volume
+
+// ── Audio engine state ────────────────────────────────────────────────────────
+var audioCtx        = null;
+var mixBuffer       = null;
+var watermarkBuffer = null;
+var mixSource       = null;
+var audioStartTime  = 0;   // audioCtx.currentTime when playback began
+var pauseOffset     = 0;   // seconds into the mix when paused
+var audioPlaying    = false;
+var watermarkTimers = [];
+var rafId           = null;
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
 function getSeries(id) {
   for (var i = 0; i < SERIES.length; i++) if (SERIES[i].id === id) return SERIES[i];
+}
+
+function fmtTime(s) {
+  s = Math.max(0, Math.floor(s));
+  var m = Math.floor(s / 60);
+  var sec = s % 60;
+  return m + ':' + String(sec).padStart('0', 2);
+}
+
+// padStart polyfill for older browsers
+if (!String.prototype.padStart) {
+  String.prototype.padStart = function(len, fill) {
+    var s = String(this);
+    while (s.length < len) s = fill + s;
+    return s;
+  };
 }
 
 function showToast(msg) {
@@ -63,6 +97,183 @@ function showToast(msg) {
   setTimeout(function() { t.classList.remove('show'); }, 3500);
 }
 
+// ── Web Audio: load both files ────────────────────────────────────────────────
+function loadAudioBuffer(url, cb) {
+  fetch(url)
+    .then(function(r) { return r.arrayBuffer(); })
+    .then(function(ab) { return audioCtx.decodeAudioData(ab); })
+    .then(function(buf) { cb(null, buf); })
+    .catch(function(err) { cb(err); });
+}
+
+function initAudioContext() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function ensureBuffersLoaded(cb) {
+  initAudioContext();
+
+  // Resume suspended context (required after user gesture on some browsers)
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
+  if (mixBuffer && watermarkBuffer) { cb(); return; }
+
+  // Show loading state
+  var btn = document.getElementById('previewBtn');
+  if (btn) btn.classList.add('loading');
+  var timeEl = document.getElementById('progTime');
+  if (timeEl) timeEl.textContent = '…';
+
+  var loaded = 0;
+  function onLoad(err) {
+    if (err) {
+      console.error('MyWarmupMix: audio load error', err);
+      showToast('Could not load preview. Please try again.');
+      if (btn) btn.classList.remove('loading');
+      if (timeEl) timeEl.textContent = '0:00';
+      return;
+    }
+    loaded++;
+    if (loaded === 2) {
+      if (btn) btn.classList.remove('loading');
+      cb();
+    }
+  }
+
+  if (!mixBuffer)       loadAudioBuffer(MIX_URL,       function(err, buf) { if (!err) mixBuffer = buf;       onLoad(err); });
+  if (!watermarkBuffer) loadAudioBuffer(WATERMARK_URL,  function(err, buf) { if (!err) watermarkBuffer = buf; onLoad(err); });
+}
+
+// ── Watermark scheduling ──────────────────────────────────────────────────────
+function playWatermarkHit() {
+  if (!audioCtx || !watermarkBuffer) return;
+  var gain = audioCtx.createGain();
+  gain.gain.value = WATERMARK_VOLUME;
+  gain.connect(audioCtx.destination);
+  var src = audioCtx.createBufferSource();
+  src.buffer = watermarkBuffer;
+  src.connect(gain);
+  src.start();
+}
+
+function scheduleWatermarks(fromOffset) {
+  clearWatermarkTimers();
+  if (!mixBuffer) return;
+  var duration = mixBuffer.duration;
+  var firstTick = Math.ceil((fromOffset + 0.01) / WATERMARK_INTERVAL) * WATERMARK_INTERVAL;
+  for (var t = firstTick; t < duration; t += WATERMARK_INTERVAL) {
+    (function(tick) {
+      var delay = (tick - fromOffset) * 1000;
+      var id = setTimeout(playWatermarkHit, delay);
+      watermarkTimers.push(id);
+    })(t);
+  }
+}
+
+function clearWatermarkTimers() {
+  for (var i = 0; i < watermarkTimers.length; i++) clearTimeout(watermarkTimers[i]);
+  watermarkTimers = [];
+}
+
+// ── Playback control ──────────────────────────────────────────────────────────
+function startAudioPlayback(offset) {
+  mixSource = audioCtx.createBufferSource();
+  mixSource.buffer = mixBuffer;
+  mixSource.connect(audioCtx.destination);
+  mixSource.start(0, offset);
+  mixSource.onended = function() {
+    if (audioPlaying) stopAudioPlayback();
+  };
+  audioStartTime = audioCtx.currentTime - offset;
+  audioPlaying = true;
+  scheduleWatermarks(offset);
+  tickProgress();
+}
+
+function stopAudioPlayback() {
+  cancelAnimationFrame(rafId);
+  clearWatermarkTimers();
+  if (mixSource) {
+    mixSource.onended = null;
+    try { mixSource.stop(); } catch(e) {}
+    mixSource = null;
+  }
+  pauseOffset = audioCtx ? Math.min(audioCtx.currentTime - audioStartTime, mixBuffer ? mixBuffer.duration : 0) : 0;
+  audioPlaying = false;
+}
+
+// ── Progress bar ticker ───────────────────────────────────────────────────────
+function tickProgress() {
+  if (!audioPlaying || !audioCtx || !mixBuffer) return;
+  var elapsed = audioCtx.currentTime - audioStartTime;
+  var duration = mixBuffer.duration;
+  var pct = Math.min((elapsed / duration) * 100, 100);
+
+  var bar = document.getElementById('progBar');
+  var timeEl = document.getElementById('progTime');
+  if (bar) bar.value = pct;
+  if (timeEl) timeEl.textContent = fmtTime(elapsed);
+
+  if (elapsed < duration) {
+    rafId = requestAnimationFrame(tickProgress);
+  } else {
+    // Mix ended
+    resetPlayer();
+  }
+}
+
+// ── Public: toggle preview (called by existing onclick) ───────────────────────
+function togglePreview() {
+  if (!audioPlaying) {
+    // START
+    ensureBuffersLoaded(function() {
+      startAudioPlayback(pauseOffset);
+      document.getElementById('previewBtn').classList.add('playing');
+      setNowPlaying(currentMixId, true);
+    });
+  } else {
+    // PAUSE
+    stopAudioPlayback();
+    document.getElementById('previewBtn').classList.remove('playing');
+    setNowPlaying(currentMixId, false);
+  }
+}
+
+// ── Public: seek (called by existing oninput on progBar) ─────────────────────
+function seekTo(v) {
+  if (!mixBuffer) return;
+  var pct = parseFloat(v) / 100;
+  var seekPos = pct * mixBuffer.duration;
+  pauseOffset = seekPos;
+  if (audioPlaying) {
+    stopAudioPlayback();
+    startAudioPlayback(seekPos);
+    document.getElementById('previewBtn').classList.add('playing');
+    setNowPlaying(currentMixId, true);
+  }
+  var timeEl = document.getElementById('progTime');
+  if (timeEl) timeEl.textContent = fmtTime(seekPos);
+}
+
+// ── Reset player (called on modal close / openMix) ───────────────────────────
+function resetPlayer() {
+  cancelAnimationFrame(rafId);
+  if (audioPlaying) stopAudioPlayback();
+  audioPlaying = false;
+  pauseOffset = 0;
+  var btn = document.getElementById('previewBtn');
+  if (btn) btn.classList.remove('playing');
+  var bar = document.getElementById('progBar');
+  if (bar) bar.value = 0;
+  var timeEl = document.getElementById('progTime');
+  if (timeEl) timeEl.textContent = '0:00';
+  if (currentMixId) setNowPlaying(currentMixId, false);
+}
+
+// ── UI helpers (unchanged from original) ────────────────────────────────────
 function mixCardHTML(m) {
   var s = getSeries(m.series);
   return '<div class="mix-card" id="card-' + m.id + '" onclick="openMix(' + m.id + ')">' +
@@ -212,7 +423,8 @@ function handleContact() {
   .catch(function() { showToast('Something went wrong. Please try again.'); });
 }
 
-var playing = false, timer = null, prog = 0, currentMixId = null;
+// ── Modal open/close ──────────────────────────────────────────────────────────
+var currentMixId = null;
 
 function openMix(id) {
   currentMixId = id;
@@ -262,33 +474,6 @@ function toggleTL() {
   document.getElementById('tracklistEl').classList.toggle('open');
   document.getElementById('tlToggle').classList.toggle('open');
 }
-
-function resetPlayer() {
-  clearInterval(timer); playing = false; prog = 0;
-  document.getElementById('previewBtn').classList.remove('playing');
-  document.getElementById('progBar').value = 0;
-  document.getElementById('progTime').textContent = '0:00';
-  if (currentMixId) setNowPlaying(currentMixId, false);
-}
-
-function togglePreview() {
-  playing = !playing;
-  document.getElementById('previewBtn').classList.toggle('playing', playing);
-  setNowPlaying(currentMixId, playing);
-  if (playing) {
-    timer = setInterval(function() {
-      prog += 0.3;
-      if (prog >= 100) prog = 0;
-      document.getElementById('progBar').value = prog;
-      var sec = Math.round(prog * 1.8), mm = Math.floor(sec / 60), ss = sec % 60;
-      document.getElementById('progTime').textContent = mm + ':' + String(ss).padStart(2, '0');
-    }, 200);
-  } else {
-    clearInterval(timer);
-  }
-}
-
-function seekTo(v) { prog = parseFloat(v); }
 
 function updateBuyPrice() {
   var v = document.getElementById('licenseSel').value;
