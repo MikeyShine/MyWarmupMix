@@ -1,9 +1,9 @@
 var SERIES = [
-  { id:'sax',      icon:'🎷', name:'Sax Series',          color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-sax.png' },
-  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series',       color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-hiphop.png' },
-  { id:'function', icon:'🔥', name:'The Function',         color:'#2d1a12', accent:'#e8723a', labelColor:'#e8723a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-function.png' },
-  { id:'open',     icon:'🎚️', name:'Open Format',          color:'#12121a', accent:'#a07be8', labelColor:'#a07be8', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-open.png' },
-  { id:'warmup',   icon:'⚡', name:'Warm-Up Mix Series',   color:'#1a1a2e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-warmupmix.png' }
+  { id:'sax',      icon:'🎷', name:'Sax Series',        color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-sax.png' },
+  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series',     color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-hiphop.png' },
+  { id:'function', icon:'🎛️', name:'EDM Series',         color:'#2d1a12', accent:'#e8723a', labelColor:'#e8723a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-function.png' },
+  { id:'open',     icon:'🎚️', name:'Open Format Series', color:'#12121a', accent:'#a07be8', labelColor:'#a07be8', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-open.png' },
+  { id:'warmup',   icon:'⚡', name:'Warm-Up Mix Series', color:'#1a1a2e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-warmupmix.png' }
 ];
 
 var MIXES = [
