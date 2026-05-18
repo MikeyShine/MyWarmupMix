@@ -8,37 +8,25 @@
 <meta name="keywords" content="DJ mixes, warm up mix, workout music, custom DJ mix, cookout playlist, team warm up music, gym mix, party mix, hip hop mix, sax mix, buy DJ mix">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.mywarmupmix.com">
-
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mywarmupmix.com">
 <meta property="og:title" content="MyWarmupMix.com — Premium DJ Mixes for Every Occasion">
-<meta property="og:description" content="Professional DJ mixes for warm-ups, cookouts, game days, lounges, and more. Preview before you buy. Pre-made and custom exclusive mixes available.">
+<meta property="og:description" content="Professional DJ mixes for warm-ups, cookouts, game days, lounges, and more. Preview before you buy.">
 <meta property="og:site_name" content="MyWarmupMix.com">
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MyWarmupMix.com — Premium DJ Mixes for Every Occasion">
 <meta name="twitter:description" content="Professional DJ mixes for warm-ups, cookouts, game days, lounges, and more. Preview before you buy.">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicStore",
   "name": "MyWarmupMix.com",
   "url": "https://www.mywarmupmix.com",
-  "description": "Professional DJ mixes for warm-ups, cookouts, game days, lounges, and more. Pre-made and custom exclusive mixes available.",
+  "description": "Professional DJ mixes for warm-ups, cookouts, game days, lounges, and more.",
   "email": "info@mywarmupmix.com",
   "currenciesAccepted": "USD",
   "paymentAccepted": "Credit Card",
-  "priceRange": "$24.99 - $199.99",
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "DJ Mix Library",
-    "itemListElement": [
-      { "@type": "Offer", "name": "Pre-Made Mix (Non-Exclusive)", "price": "24.99", "priceCurrency": "USD" },
-      { "@type": "Offer", "name": "Custom Mix (Non-Exclusive)", "price": "74.99", "priceCurrency": "USD" },
-      { "@type": "Offer", "name": "Custom Exclusive Mix", "price": "199.99", "priceCurrency": "USD" }
-    ]
-  }
+  "priceRange": "$24.99 - $199.99"
 }
 </script>
 <style>
@@ -51,17 +39,23 @@
     --radius: 10px; --radius-lg: 14px;
   }
   body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
-  nav { display: flex; align-items: center; justify-content: center; padding: 0 2rem; height: 140px; border-bottom: 1px solid var(--border); background: #000000; position: sticky; top: 0; z-index: 100; }
-  .logo { font-size: 52px; font-weight: 800; letter-spacing: -2px; cursor: pointer; display: flex; align-items: center; gap: 12px; }
-  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+
+  /* NAV */
+  nav { display: flex; align-items: flex-end; justify-content: space-between; padding: 1rem 4rem 1rem; border-bottom: 1px solid var(--border); background: #000; position: sticky; top: 0; z-index: 100; }
+  .logo { cursor: pointer; }
+  .logo img { height: 110px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; padding-bottom: 10px; }
   .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.15s; }
   .nav-links a:hover { color: var(--text); }
   .nav-cta { background: var(--accent) !important; color: #000 !important; padding: 6px 16px; border-radius: 6px; font-weight: 600; font-size: 13px !important; }
   .nav-cta:hover { background: var(--accent2) !important; }
+
   .page { display: none; }
   .page.active { display: block; }
+
+  /* HERO */
   .hero { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; text-align: center; }
-  .hero-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(201,168,76,0.25); }
+  .hero-tag { display: inline-block; background: var(--accent-dim); color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; border: 1px solid rgba(245,138,19,0.25); }
   .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1rem; }
   .hero h1 em { font-style: normal; color: var(--accent); }
   .hero p { color: var(--text2); font-size: 17px; max-width: 580px; margin: 0 auto 2.5rem; }
@@ -70,10 +64,14 @@
   .btn-primary:hover { background: var(--accent2); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
   .btn-outline:hover { background: var(--bg3); }
+
+  /* STATS */
   .stats { display: flex; justify-content: center; gap: 3rem; padding: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
   .stat { text-align: center; }
   .stat-num { font-size: 22px; font-weight: 700; color: var(--accent); }
   .stat-label { font-size: 12px; color: var(--text3); margin-top: 2px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  /* WARM-UP SPOTLIGHT */
   .warmup-spotlight { background: var(--bg2); border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
   .warmup-spotlight-inner { max-width: 1120px; margin: 0 auto; }
   .spotlight-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
@@ -82,6 +80,8 @@
   .spotlight-link { font-size: 13px; color: var(--accent); cursor: pointer; }
   .spotlight-link:hover { text-decoration: underline; }
   .spotlight-desc { font-size: 14px; color: var(--text2); margin-bottom: 2rem; max-width: 600px; }
+
+  /* EVERYTHING ELSE */
   .else-section { max-width: 1120px; margin: 0 auto; padding: 3rem 2rem; }
   .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
   .section-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
@@ -92,6 +92,8 @@
   .stab:hover { border-color: var(--border2); color: var(--text); }
   .stab.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
   .stab-icon { font-size: 15px; }
+
+  /* MIX GRID */
   .mix-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .mix-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: transform 0.15s, border-color 0.15s; position: relative; }
   .mix-card:hover { transform: translateY(-3px); border-color: var(--border2); }
@@ -105,7 +107,6 @@
   .play-circle { width: 52px; height: 52px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
   .play-circle svg { width: 18px; height: 18px; fill: #000; margin-left: 3px; }
   .mix-series-badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 4px; }
-  /* NOW PLAYING BARS */
   .now-playing-indicator { position: absolute; top: 10px; right: 10px; display: none; align-items: flex-end; gap: 2px; height: 16px; }
   .mix-card.now-playing .now-playing-indicator { display: flex; }
   .np-bar { width: 3px; background: var(--accent); border-radius: 2px; animation: npPulse 0.8s ease-in-out infinite alternate; }
@@ -123,14 +124,6 @@
   .mix-price { font-size: 16px; font-weight: 700; color: var(--accent); }
   .mix-tracks { font-size: 12px; color: var(--text3); }
 
-  /* HOW IT WORKS */
-  .how-section { max-width: 1120px; margin: 0 auto; padding: 0 2rem 4rem; }
-  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
-  .how-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem 1.25rem; }
-  .how-num { width: 32px; height: 32px; background: var(--accent-dim); border: 1px solid rgba(201,168,76,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
-  .how-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .how-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
-
   /* TESTIMONIALS */
   .testimonials-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4rem 2rem; }
   .testimonials-inner { max-width: 1120px; margin: 0 auto; }
@@ -139,12 +132,19 @@
   .testimonial-quote { font-size: 14px; color: var(--text2); line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
   .testimonial-quote::before { content: '"'; color: var(--accent); font-size: 20px; font-style: normal; line-height: 1; display: block; margin-bottom: 6px; }
   .testimonial-author { display: flex; align-items: center; gap: 10px; }
-  .testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
+  .testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(245,138,19,0.3); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--accent); flex-shrink: 0; }
   .testimonial-name { font-size: 13px; font-weight: 700; }
   .testimonial-role { font-size: 12px; color: var(--text3); }
 
+  /* HOW IT WORKS */
+  .how-section { max-width: 1120px; margin: 0 auto; padding: 4rem 2rem; }
+  .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .how-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem 1.25rem; }
+  .how-num { width: 32px; height: 32px; background: var(--accent-dim); border: 1px solid rgba(245,138,19,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+  .how-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .how-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
   /* FAQ */
-  .faq-section { max-width: 760px; margin: 0 auto; padding: 4rem 2rem; }
   .faq-item { border-bottom: 1px solid var(--border); }
   .faq-question { width: 100%; background: none; border: none; color: var(--text); font-size: 15px; font-weight: 600; text-align: left; padding: 1.25rem 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: inherit; }
   .faq-question:hover { color: var(--accent); }
@@ -153,7 +153,7 @@
   .faq-answer { font-size: 14px; color: var(--text2); line-height: 1.75; padding-bottom: 1.25rem; display: none; }
   .faq-answer.open { display: block; }
 
-  /* DOC / ABOUT */
+  /* DOC PAGES */
   .doc-page { max-width: 740px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
   .doc-page h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
   .doc-page .doc-date { font-size: 13px; color: var(--text3); margin-bottom: 2.5rem; }
@@ -172,26 +172,23 @@
   .pillar-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
   .pillar-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
 
-  /* CONTACT PAGE */
+  /* CONTACT & CUSTOM PAGES */
   .contact-page { max-width: 640px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
   .contact-page h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
   .contact-page .contact-sub { font-size: 15px; color: var(--text2); margin-bottom: 2.5rem; }
-  .form-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-  .form-field label { font-size: 12px; color: var(--text3); font-weight: 500; }
-  .form-field input, .form-field select, .form-field textarea { background: var(--bg3); border: 1px solid var(--border2); border-radius: 7px; padding: 10px 12px; color: var(--text); font-size: 14px; font-family: inherit; transition: border-color 0.15s; }
-  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); }
-  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--text3); }
-  .form-field textarea { resize: vertical; min-height: 120px; }
-  .btn-submit { width: 100%; padding: 14px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.15s; margin-top: 8px; }
-  .btn-submit:hover { background: var(--accent2); }
-
-  /* CUSTOM MIX PAGE */
   .custom-page { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 5rem; }
   .custom-page h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; }
   .custom-page .custom-sub { font-size: 15px; color: var(--text2); margin-bottom: 2.5rem; max-width: 580px; }
   .form-section { margin-bottom: 2rem; }
   .form-section-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
   .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .form-field { display: flex; flex-direction: column; gap: 5px; }
+  .form-field label { font-size: 12px; color: var(--text3); font-weight: 500; }
+  .form-field input, .form-field select, .form-field textarea { background: var(--bg3); border: 1px solid var(--border2); border-radius: 7px; padding: 10px 12px; color: var(--text); font-size: 14px; font-family: inherit; transition: border-color 0.15s; }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--text3); }
+  .form-field select option { background: var(--bg3); }
+  .form-field textarea { resize: vertical; min-height: 120px; }
   .tracklist-form { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.5rem; }
   .tracklist-form-header { display: grid; grid-template-columns: 36px 1fr 1fr; background: var(--bg3); border-bottom: 1px solid var(--border); padding: 10px 16px; }
   .tracklist-form-header span { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text3); }
@@ -204,7 +201,6 @@
   .order-summary { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
   .order-summary-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3); margin-bottom: 1rem; }
   .order-line { display: flex; justify-content: space-between; align-items: center; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--border); }
-  .order-line:last-of-type { border-bottom: none; }
   .order-line-label { color: var(--text2); }
   .order-line-val { font-weight: 600; color: var(--text); }
   .order-total { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border2); }
@@ -223,9 +219,8 @@
   .consent-row label { font-size: 12px; color: var(--text2); line-height: 1.5; cursor: pointer; }
   .btn-pay { width: 100%; padding: 16px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-size: 17px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
   .btn-pay:hover { background: var(--accent2); }
-
-  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text3); font-size: 13px; }
-  footer a { color: var(--text3); text-decoration: underline; cursor: pointer; }
+  .btn-submit { width: 100%; padding: 14px; background: var(--accent); color: #000; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.15s; margin-top: 8px; }
+  .btn-submit:hover { background: var(--accent2); }
 
   /* MODAL */
   .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.78); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -254,7 +249,7 @@
   .track-row:last-child { border-bottom: none; }
   .track-num { color: var(--text3); font-size: 11px; }
   .track-name { color: var(--text); }
-  .preview-block { background: var(--accent-dim); border: 1px solid rgba(201,168,76,0.25); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .preview-block { background: var(--accent-dim); border: 1px solid rgba(245,138,19,0.25); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
   .preview-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
   .live-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
   .preview-note { font-size: 12px; color: var(--text3); margin-bottom: 12px; line-height: 1.5; }
@@ -279,6 +274,8 @@
   .btn-buy:hover:not(:disabled) { background: var(--accent2); }
   .btn-buy:disabled { opacity: 0.38; cursor: not-allowed; }
   .secure-note { text-align: center; font-size: 11px; color: var(--text3); margin-top: 10px; }
+  footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text3); font-size: 13px; }
+  footer a { color: var(--text3); text-decoration: underline; cursor: pointer; }
   .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--bg3); border: 1px solid var(--border2); color: var(--text); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; z-index: 9999; transition: transform 0.3s; white-space: nowrap; pointer-events: none; }
   .toast.show { transform: translateX(-50%) translateY(0); }
 </style>
@@ -286,8 +283,8 @@
 <body>
 
 <nav>
-  <div class="logo" onclick="showPage('home')" style="display:flex;align-items:center;cursor:pointer;">
-    <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:120px;width:auto;">
+  <div class="logo" onclick="showPage('home')">
+    <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:110px;width:auto;">
   </div>
   <div class="nav-links">
     <a onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Browse</a>
@@ -311,14 +308,12 @@
       <button class="btn-outline" onclick="showPage('custom')">Request a Custom Mix</button>
     </div>
   </div>
-
   <div class="stats">
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Mix Series</div></div>
     <div class="stat"><div class="stat-num">20</div><div class="stat-label">Mixes Available</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Preview Before Buy</div></div>
     <div class="stat"><div class="stat-num">3</div><div class="stat-label">License Types</div></div>
   </div>
-
   <div class="warmup-spotlight" id="warmup-spotlight">
     <div class="warmup-spotlight-inner">
       <div class="spotlight-eyebrow">⚡ Featured Series</div>
@@ -330,7 +325,6 @@
       <div class="mix-grid" id="warmupGrid"></div>
     </div>
   </div>
-
   <div class="else-section" id="everything-else">
     <div class="section-header">
       <div class="section-title">Everything Else</div>
@@ -339,44 +333,20 @@
     <div class="series-tabs" id="seriesTabs"></div>
     <div class="mix-grid" id="mixGrid"></div>
   </div>
-
-  <!-- TESTIMONIALS -->
   <div class="testimonials-section">
     <div class="testimonials-inner">
-      <div class="section-header">
-        <div class="section-title">What people are saying</div>
-      </div>
+      <div class="section-header"><div class="section-title">What people are saying</div></div>
       <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">I've been a basketball coach for twelve years and I've never had my players more locked in during warm-ups. Bought the Vol. 2 mix and it's been on repeat every practice.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">DT</div><div><div class="testimonial-name">Coach D. Thompson</div><div class="testimonial-role">High School Basketball, Atlanta GA</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-quote">I run a spin studio and finding music that hits the right energy without being too much is hard. Poolside Drift is perfect for our morning classes. My members ask about it every week.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">MR</div><div><div class="testimonial-name">Maria R.</div><div class="testimonial-role">Spin Studio Owner, Miami FL</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-quote">Ordered a custom exclusive mix for my wedding reception and it was delivered in 3 days. The DJ had the whole room going. Worth every penny and then some.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">JW</div><div><div class="testimonial-name">James W.</div><div class="testimonial-role">Wedding Client, Houston TX</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-quote">Backyard Bounce literally saved my cookout. I'm not exaggerating. Had it playing the whole afternoon and people were asking me who the DJ was. I just smiled.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">KJ</div><div><div class="testimonial-name">Kevin J.</div><div class="testimonial-role">Satisfied Customer, Charlotte NC</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-quote">Max the Sax is a vibe I didn't know I needed. Hit play on a Friday night and didn't stop it until Sunday. That's all I have to say about that.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">TP</div><div><div class="testimonial-name">Tanya P.</div><div class="testimonial-role">Verified Buyer</div></div></div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-quote">The preview feature is what sold me. I could actually hear the mix before buying — no guessing. That alone sets this site apart from everything else I've tried.</div>
-          <div class="testimonial-author"><div class="testimonial-avatar">AL</div><div><div class="testimonial-name">Andre L.</div><div class="testimonial-role">Event Planner, Washington DC</div></div></div>
-        </div>
+        <div class="testimonial-card"><div class="testimonial-quote">I've been a basketball coach for twelve years and I've never had my players more locked in during warm-ups. Bought the Vol. 2 mix and it's been on repeat every practice.</div><div class="testimonial-author"><div class="testimonial-avatar">DT</div><div><div class="testimonial-name">Coach D. Thompson</div><div class="testimonial-role">High School Basketball, Atlanta GA</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">I run a spin studio and finding music that hits the right energy without being too much is hard. Poolside Drift is perfect for our morning classes. My members ask about it every week.</div><div class="testimonial-author"><div class="testimonial-avatar">MR</div><div><div class="testimonial-name">Maria R.</div><div class="testimonial-role">Spin Studio Owner, Miami FL</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">Ordered a custom exclusive mix for my wedding reception and it was delivered in 3 days. The DJ had the whole room going. Worth every penny and then some.</div><div class="testimonial-author"><div class="testimonial-avatar">JW</div><div><div class="testimonial-name">James W.</div><div class="testimonial-role">Wedding Client, Houston TX</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">Backyard Bounce literally saved my cookout. I'm not exaggerating. Had it playing the whole afternoon and people were asking me who the DJ was. I just smiled.</div><div class="testimonial-author"><div class="testimonial-avatar">KJ</div><div><div class="testimonial-name">Kevin J.</div><div class="testimonial-role">Satisfied Customer, Charlotte NC</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">Max the Sax is a vibe I didn't know I needed. Hit play on a Friday night and didn't stop it until Sunday. That's all I have to say about that.</div><div class="testimonial-author"><div class="testimonial-avatar">TP</div><div><div class="testimonial-name">Tanya P.</div><div class="testimonial-role">Verified Buyer</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">The preview feature is what sold me. I could actually hear the mix before buying — no guessing. That alone sets this site apart from everything else I've tried.</div><div class="testimonial-author"><div class="testimonial-avatar">AL</div><div><div class="testimonial-name">Andre L.</div><div class="testimonial-role">Event Planner, Washington DC</div></div></div></div>
       </div>
     </div>
   </div>
-
-  <!-- HOW IT WORKS -->
-  <div class="how-section" style="padding-top:4rem;">
+  <div class="how-section">
     <div class="section-header"><div class="section-title">How it works</div></div>
     <div class="how-grid">
       <div class="how-card"><div class="how-num">1</div><div class="how-title">Pick your vibe</div><div class="how-desc">Browse warm-up mixes or dig into our other series — cookout, hip-hop, lounge, and more.</div></div>
@@ -385,8 +355,6 @@
       <div class="how-card"><div class="how-num">4</div><div class="how-title">Drop it anywhere</div><div class="how-desc">Clean, watermark-free file. Gym, cookout, venue, game day — you're ready.</div></div>
     </div>
   </div>
-
-
   </main>
 </div>
 
@@ -443,24 +411,19 @@
       <div class="rush-row" onclick="var cb=document.getElementById('cm-rush'); cb.checked=!cb.checked; updateOrderSummary();">
         <div class="rush-left">
           <input type="checkbox" id="cm-rush" onclick="event.stopPropagation(); updateOrderSummary();">
-          <div class="rush-info">
-            <div class="rush-title">48-Hour Rush Delivery</div>
-            <div class="rush-desc">We'll prioritize your mix and deliver within 48 hours of payment confirmation.</div>
-          </div>
+          <div class="rush-info"><div class="rush-title">48-Hour Rush Delivery</div><div class="rush-desc">We'll prioritize your mix and deliver within 48 hours of payment confirmation.</div></div>
         </div>
         <div class="rush-price">+$49.99</div>
       </div>
       <div style="font-size:12px;color:var(--text3);margin-top:-4px;">Standard delivery is 7–10 business days. Delays are possible and will be communicated promptly.</div>
     </div>
-          <div class="form-section">
+    <div class="form-section">
       <div class="form-section-title">Your Tracklist (<span id="tracklist-count">20</span> tracks max)</div>
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:1rem;font-size:13px;color:var(--text2);line-height:1.6;">
         <strong style="color:var(--text);">Creative note:</strong> Every track you request will be included in your mix — guaranteed. However, we reserve the right to select the most appropriate version, edit, or remix of each track to best serve the flow and energy of the mix. If a specific version matters to you, note it in the artist or title field.
       </div>
       <div class="tracklist-form">
-        <div class="tracklist-form-header">
-          <span>#</span><span>Artist</span><span>Title</span>
-        </div>
+        <div class="tracklist-form-header"><span>#</span><span>Artist</span><span>Title</span></div>
         <div id="trackFormRows"></div>
       </div>
     </div>
@@ -479,26 +442,28 @@
   </div>
 </div>
 
-  <!-- FAQ PAGE -->
-  <div class="page" id="page-faq">
-    <div class="doc-page">
-      <div class="doc-back" onclick="showPage('home')">← Back to home</div>
-      <h1>Frequently Asked Questions</h1>
-      <p style="color:var(--text2);font-size:14px;margin-bottom:2rem;">Can't find what you're looking for? <a onclick="showPage('contact')">Contact us</a> and we'll get back to you within 24–48 hours.</p>
-      <div id="faqListPage"></div>
-    </div>
-  </div>
+<!-- CONTACT -->
 <div class="page" id="page-contact">
   <div class="contact-page">
     <div class="doc-back" onclick="showPage('home')">← Back to home</div>
     <h1>Get in Touch</h1>
     <p class="contact-sub">Have a question, a custom request, or just want to talk music? We'd love to hear from you. We typically respond within 24–48 hours.</p>
-    <div class="form-field"><label>First &amp; Last Name</label><input type="text" id="ct-name" placeholder="Jane Smith"></div>
-    <div class="form-field"><label>Email Address</label><input type="email" id="ct-email" placeholder="jane@example.com"></div>
-    <div class="form-field"><label>Phone Number (optional)</label><input type="tel" id="ct-phone" placeholder="(555) 555-5555"></div>
-    <div class="form-field"><label>Message</label><textarea id="ct-message" placeholder="What's on your mind?"></textarea></div>
+    <div class="form-field" style="margin-bottom:14px;"><label>First &amp; Last Name</label><input type="text" id="ct-name" placeholder="Jane Smith"></div>
+    <div class="form-field" style="margin-bottom:14px;"><label>Email Address</label><input type="email" id="ct-email" placeholder="jane@example.com"></div>
+    <div class="form-field" style="margin-bottom:14px;"><label>Phone Number (optional)</label><input type="tel" id="ct-phone" placeholder="(555) 555-5555"></div>
+    <div class="form-field" style="margin-bottom:14px;"><label>Message</label><textarea id="ct-message" placeholder="What's on your mind?"></textarea></div>
     <button class="btn-submit" onclick="handleContact()">Send Message</button>
     <div class="secure-note" style="margin-top:12px;">Or email us directly: <a href="mailto:info@mywarmupmix.com" style="color:var(--accent);">info@mywarmupmix.com</a></div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="page" id="page-faq">
+  <div class="doc-page">
+    <div class="doc-back" onclick="showPage('home')">← Back to home</div>
+    <h1>Frequently Asked Questions</h1>
+    <p style="color:var(--text2);font-size:14px;margin-bottom:2rem;">Can't find what you're looking for? <a onclick="showPage('contact')">Contact us</a> and we'll get back to you within 24–48 hours.</p>
+    <div id="faqListPage"></div>
   </div>
 </div>
 
@@ -541,8 +506,10 @@
     <p><strong>Custom Exclusive — $199.99:</strong> Mix tailored to your specifications. Never sold to another buyer.</p>
     <h2>4. Permitted use</h2><p>Purchased mixes may be used for personal enjoyment, private events, gym and fitness classes, parties, and similar non-commercial settings. Resale or redistribution is not permitted without prior written consent.</p>
     <h2>5. Buyer representations</h2><p>By completing a purchase, you confirm that you legally own or have licensed all recordings referenced in the tracklist.</p>
-    <h2>6. Delivery</h2><p>Standard delivery is 7–10 business days. Rush delivery (48 hours) is available for an additional $49.99. Contact <a href="mailto:info@mywarmupmix.com">info@mywarmupmix.com</a> with any issues.</p>
-    <h2>9. Creative discretion</h2><p>For custom mix orders, every track submitted by the buyer is guaranteed to be included in the final mix. MyWarmupMix.com reserves the right to select the most appropriate version, edit, or remix of any submitted track in order to best serve the flow, energy, and overall quality of the mix. The tracklist itself will not be altered. Buyers who require a specific version of a track should note this at the time of order.</p>
+    <h2>6. Delivery</h2><p>Standard delivery is 7–10 business days. Rush delivery (48 hours) is available for an additional $49.99.</p>
+    <h2>7. Refunds</h2><p>All sales are final once a download link has been delivered.</p>
+    <h2>8. Rush delivery</h2><p>Rush delivery orders are prioritized and delivered within 48 hours of payment confirmation. Delays due to unforeseen circumstances will be communicated promptly.</p>
+    <h2>9. Creative discretion</h2><p>For custom mix orders, every track submitted by the buyer is guaranteed to be included in the final mix. MyWarmupMix.com reserves the right to select the most appropriate version, edit, or remix of any submitted track. The tracklist itself will not be altered.</p>
     <h2>10. Refunds</h2><p>All sales are final once a download link has been delivered.</p>
     <h2>11. Contact</h2><p><a href="mailto:info@mywarmupmix.com">info@mywarmupmix.com</a></p>
   </div>
@@ -572,7 +539,7 @@
   </div>
 </div>
 
-<!-- PRODUCT MODAL -->
+<!-- MODAL -->
 <div class="overlay" id="overlay" onclick="closeOverlay(event)">
   <div class="product-modal">
     <div style="position:relative;">
@@ -635,7 +602,7 @@
 <script>
 var SERIES = [
   { id:'sax',      icon:'🎷', name:'Sax Series',     color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a' },
-  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series', color:'#1a1a0e', accent:'#c9a84c', labelColor:'#c9a84c' },
+  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series', color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13' },
   { id:'function', icon:'🔥', name:'The Function',   color:'#2d1a12', accent:'#e8723a', labelColor:'#e8723a' },
   { id:'open',     icon:'🎚️', name:'Open Format',    color:'#12121a', accent:'#a07be8', labelColor:'#a07be8' },
   { id:'warmup',   icon:'⚡', name:'Warm-Up Series', color:'#1a1a2e', accent:'#7b9ce8', labelColor:'#7b9ce8' }
@@ -666,16 +633,15 @@ var MIXES = [
 
 var LICENSE_DESCS = { '24.99':'Build once, sell many. You receive a clean non-exclusive copy of this mix.', '74.99':'Made to your specs. Non-exclusive — others may also purchase this mix.', '199.99':'Made for you only. This mix will never be sold to anyone else. Ever.' };
 var CM_LICENSE_DESCS = { '74.99':'Non-exclusive — others may also purchase this mix.', '199.99':'Exclusive — this mix will never be sold to anyone else. Ever.' };
-
 var FAQS = [
   { q:'What does "non-exclusive" mean?', a:'Non-exclusive means the same mix may be sold to other buyers. You\'re purchasing the right to use it, not sole ownership. If you want a mix that\'s entirely yours and will never be sold to anyone else, choose the Custom Exclusive license.' },
-  { q:'How does delivery work after I pay?', a:'After payment is confirmed you\'ll receive a private, time-limited download link via email within your chosen delivery window — standard is 7–10 business days, rush is 48 hours. The link expires after 48 hours, so download your file promptly. If you have any issues, email us at info@mywarmupmix.com within 7 days.' },
-  { q:'Can I use the mix commercially — like at a paid event or in a business?', a:'Pre-made and custom non-exclusive mixes are licensed for personal and private event use. If you\'re using a mix in a commercial setting — such as a fitness studio, club, or paid event — please reach out to us first so we can discuss appropriate licensing.' },
+  { q:'How does delivery work after I pay?', a:'After payment is confirmed you\'ll receive a private, time-limited download link via email within your chosen delivery window — standard is 7–10 business days, rush is 48 hours. The link expires after 48 hours, so download your file promptly.' },
+  { q:'Can I use the mix commercially?', a:'Pre-made and custom non-exclusive mixes are licensed for personal and private event use. If you\'re using a mix in a commercial setting — such as a fitness studio, club, or paid event — please reach out to us first so we can discuss appropriate licensing.' },
   { q:'What if I want specific songs in my mix?', a:'That\'s exactly what the Custom Mix option is for. Head to the Custom Mix page, enter your tracklist, choose your license, and submit your order. We\'ll build it around your vision.' },
   { q:'Can I preview a mix before buying?', a:'Yes — every mix in our library has a Preview Highlights player. It streams a watermarked highlight reel of the full mix so you know exactly what you\'re getting before you spend a dollar.' },
-  { q:'What happens if I\'m not happy with my custom mix?', a:'We communicate throughout the process and will reach out if we have any questions about your tracklist. Because custom mixes are built specifically for you, all sales are final once delivered — but we\'re committed to getting it right. If something feels off, contact us and we\'ll do our best to make it right.' },
-  { q:'How do I know the mix will sound good?', a:'Every mix is crafted by an experienced DJ who actually cares about the music — not just someone running software. You can also preview every pre-made mix before buying. The passion behind each mix is what sets us apart.' },
-  { q:'Do I get to choose the exact version of each track?', a:'Every track you request is guaranteed to be in your mix — we don\'t swap or substitute songs. What we do reserve creative freedom on is the version of each track. We may use a radio edit, extended mix, instrumental, or remix if it better serves the flow and energy of your mix. If a specific version is important to you — a particular remix, the original album cut, etc. — just note it in the artist or title field when you submit your order and we\'ll honor it.' },
+  { q:'Do I get to choose the exact version of each track?', a:'Every track you request is guaranteed to be in your mix — we don\'t swap or substitute songs. What we do reserve creative freedom on is the version of each track. We may use a radio edit, extended mix, instrumental, or remix if it better serves the flow and energy of your mix. If a specific version is important to you, just note it in the artist or title field.' },
+  { q:'What happens if I\'m not happy with my custom mix?', a:'We communicate throughout the process and will reach out if we have any questions about your tracklist. Because custom mixes are built specifically for you, all sales are final once delivered — but we\'re committed to getting it right.' },
+  { q:'Do you offer refunds?', a:'Due to the digital nature of our products, all sales are final once a download link has been delivered. If you experience a technical issue that prevents you from accessing your file, contact us within 7 days and we\'ll resolve it.' }
 ];
 
 function getSeries(id) { for(var i=0;i<SERIES.length;i++) if(SERIES[i].id===id) return SERIES[i]; }
@@ -684,16 +650,7 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   document.getElementById('page-'+id).classList.add('active');
   window.scrollTo(0,0);
-  var titles = {
-    'home':    'MyWarmupMix.com — Premium DJ Mixes for Every Occasion',
-    'custom':  'Request a Custom Mix — MyWarmupMix.com',
-    'about':   'About Us — MyWarmupMix.com',
-    'contact': 'Contact — MyWarmupMix.com',
-    'faq':     'FAQ — MyWarmupMix.com',
-    'terms':   'Terms of Service — MyWarmupMix.com',
-    'privacy': 'Privacy Policy — MyWarmupMix.com',
-    'dmca':    'DMCA Policy — MyWarmupMix.com'
-  };
+  var titles = { 'home':'MyWarmupMix.com — Premium DJ Mixes for Every Occasion', 'custom':'Request a Custom Mix — MyWarmupMix.com', 'about':'About Us — MyWarmupMix.com', 'contact':'Contact — MyWarmupMix.com', 'faq':'FAQ — MyWarmupMix.com', 'terms':'Terms of Service — MyWarmupMix.com', 'privacy':'Privacy Policy — MyWarmupMix.com', 'dmca':'DMCA Policy — MyWarmupMix.com' };
   document.title = titles[id] || 'MyWarmupMix.com';
 }
 function showLegalPage(id) { showPage(id); }
@@ -719,7 +676,7 @@ function renderWarmupGrid() {
   document.getElementById('warmupGrid').innerHTML = MIXES.filter(function(m){ return m.series==='warmup'; }).map(mixCardHTML).join('');
 }
 
-var activeFilter = 'all';
+var activeFilter='all';
 function renderTabs(active) {
   var nonWarmup = SERIES.filter(function(s){ return s.id!=='warmup'; });
   var all = [{id:'all',icon:'🎧',name:'All'}].concat(nonWarmup);
@@ -737,52 +694,42 @@ function filterSeries(id) {
 }
 
 function buildFAQ() {
-  var html = FAQS.map(function(f,i){
+  document.getElementById('faqListPage').innerHTML = FAQS.map(function(f,i){
     return '<div class="faq-item">' +
-      '<button class="faq-question" onclick="toggleFAQ(\'p\','+i+')" id="fq-p-'+i+'">'+f.q+'<span class="faq-chev">+</span></button>' +
-      '<div class="faq-answer" id="fa-p-'+i+'">'+f.a+'</div>' +
-    '</div>';
+      '<button class="faq-question" onclick="toggleFAQ('+i+')" id="fq-'+i+'">'+f.q+'<span class="faq-chev">+</span></button>' +
+      '<div class="faq-answer" id="fa-'+i+'">'+f.a+'</div></div>';
   }).join('');
-  document.getElementById('faqListPage').innerHTML = html;
+}
+function toggleFAQ(i) {
+  var q=document.getElementById('fq-'+i), a=document.getElementById('fa-'+i);
+  var open=a.classList.toggle('open'); q.classList.toggle('open',open);
 }
 
-function toggleFAQ(prefix, i) {
-  var q=document.getElementById('fq-'+prefix+'-'+i);
-  var a=document.getElementById('fa-'+prefix+'-'+i);
-  var open=a.classList.toggle('open');
-  q.classList.toggle('open',open);
-}
-
-/* CUSTOM MIX */
 function buildTrackRows(max) {
-  max = max || 20;
-  var html = '';
+  max=max||20;
+  var html='';
   for(var i=1;i<=max;i++) {
-    html += '<div class="track-form-row"><div class="track-form-num">'+i+'</div>' +
+    html+='<div class="track-form-row"><div class="track-form-num">'+i+'</div>' +
       '<input class="track-form-input" type="text" placeholder="Artist" id="tr-artist-'+i+'">' +
       '<input class="track-form-input" type="text" placeholder="Title" id="tr-title-'+i+'"></div>';
   }
-  document.getElementById('trackFormRows').innerHTML = html;
-  document.getElementById('tracklist-count').textContent = max;
+  document.getElementById('trackFormRows').innerHTML=html;
+  document.getElementById('tracklist-count').textContent=max;
 }
-
 function handleOccasionChange() {
-  var occ = document.getElementById('cm-occasion').value;
-  buildTrackRows(occ === 'Team Warm-Up' ? 20 : 40);
+  buildTrackRows(document.getElementById('cm-occasion').value==='Team Warm-Up' ? 20 : 40);
 }
-
 function updateOrderSummary() {
-  var v = document.getElementById('cm-license').value;
-  var rush = document.getElementById('cm-rush').checked;
-  var total = (parseFloat(v) + (rush ? 49.99 : 0)).toFixed(2);
-  document.getElementById('sum-license-label').textContent = v==='199.99' ? 'Custom Exclusive' : 'Custom (Non-Exclusive)';
-  document.getElementById('sum-license-price').textContent = '$'+parseFloat(v).toFixed(2);
-  document.getElementById('sum-rush-line').style.display = rush ? 'flex' : 'none';
-  document.getElementById('sum-total').textContent = '$'+total;
-  document.getElementById('pay-total').textContent = total;
-  document.getElementById('cm-license-desc').textContent = CM_LICENSE_DESCS[v];
+  var v=document.getElementById('cm-license').value;
+  var rush=document.getElementById('cm-rush').checked;
+  var total=(parseFloat(v)+(rush?49.99:0)).toFixed(2);
+  document.getElementById('sum-license-label').textContent=v==='199.99'?'Custom Exclusive':'Custom (Non-Exclusive)';
+  document.getElementById('sum-license-price').textContent='$'+parseFloat(v).toFixed(2);
+  document.getElementById('sum-rush-line').style.display=rush?'flex':'none';
+  document.getElementById('sum-total').textContent='$'+total;
+  document.getElementById('pay-total').textContent=total;
+  document.getElementById('cm-license-desc').textContent=CM_LICENSE_DESCS[v];
 }
-
 function handleCustomPay() {
   var name=document.getElementById('cm-name').value.trim();
   var email=document.getElementById('cm-email').value.trim();
@@ -796,14 +743,11 @@ function handleCustomPay() {
   if(!consent){ showToast('Please confirm the consent checkbox before paying.'); return; }
   showToast('Stripe checkout coming soon — stay tuned!');
 }
-
 function highlight(id) {
   var el=document.getElementById(id);
   el.style.borderColor='#e24b4a'; el.focus();
   setTimeout(function(){ el.style.borderColor=''; },3000);
 }
-
-/* CONTACT */
 function handleContact() {
   var name=document.getElementById('ct-name').value.trim();
   var email=document.getElementById('ct-email').value.trim();
@@ -818,9 +762,7 @@ function handleContact() {
   document.getElementById('ct-message').value='';
 }
 
-/* MODAL + PLAYER */
 var playing=false, timer=null, prog=0, currentMixId=null;
-
 function openMix(id) {
   currentMixId=id;
   var m=null; for(var i=0;i<MIXES.length;i++) if(MIXES[i].id===id){ m=MIXES[i]; break; }
@@ -846,33 +788,21 @@ function openMix(id) {
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
-
-function setNowPlaying(id, active) {
-  var card = document.getElementById('card-'+id);
-  if(card) card.classList.toggle('now-playing', active);
-}
-
-function closeModal() {
-  resetPlayer();
-  if(currentMixId) setNowPlaying(currentMixId, false);
-  document.getElementById('overlay').classList.remove('open');
-  document.body.style.overflow='';
-}
+function setNowPlaying(id,active) { var c=document.getElementById('card-'+id); if(c) c.classList.toggle('now-playing',active); }
+function closeModal() { resetPlayer(); if(currentMixId) setNowPlaying(currentMixId,false); document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }
 function closeOverlay(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
 function toggleTL() { document.getElementById('tracklistEl').classList.toggle('open'); document.getElementById('tlToggle').classList.toggle('open'); }
-
 function resetPlayer() {
   clearInterval(timer); playing=false; prog=0;
   document.getElementById('previewBtn').classList.remove('playing');
   document.getElementById('progBar').value=0;
   document.getElementById('progTime').textContent='0:00';
-  if(currentMixId) setNowPlaying(currentMixId, false);
+  if(currentMixId) setNowPlaying(currentMixId,false);
 }
-
 function togglePreview() {
   playing=!playing;
   document.getElementById('previewBtn').classList.toggle('playing',playing);
-  setNowPlaying(currentMixId, playing);
+  setNowPlaying(currentMixId,playing);
   if(playing) {
     timer=setInterval(function(){
       prog+=0.3; if(prog>=100) prog=0;
@@ -882,18 +812,15 @@ function togglePreview() {
     },200);
   } else clearInterval(timer);
 }
-
 function seekTo(v){ prog=parseFloat(v); }
 function updateBuyPrice(){ var v=document.getElementById('licenseSel').value; document.getElementById('buyPriceSpan').textContent=v; document.getElementById('licenseDesc').textContent=LICENSE_DESCS[v]; }
 function toggleBuy(){ document.getElementById('buyBtn').disabled=!document.getElementById('consentCk').checked; }
 function handleBuy(){ showToast('Stripe checkout coming soon — stay tuned!'); }
-
 function showToast(msg) {
   var t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
   setTimeout(function(){ t.classList.remove('show'); },3500);
 }
-
 function addFooters() {
   ['home','custom','faq','contact','about','terms','privacy','dmca'].forEach(function(pid){
     var p=document.getElementById('page-'+pid); if(!p) return;
@@ -902,7 +829,6 @@ function addFooters() {
     p.appendChild(f);
   });
 }
-
 renderWarmupGrid();
 renderTabs('all');
 filterSeries('all');
