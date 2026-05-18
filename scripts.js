@@ -54,16 +54,16 @@ var FAQS = [
 // ── Audio URLs ────────────────────────────────────────────────────────────────
 var MIX_URL       = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/Warm-Up%20Mix%20Vol1.mp3';
 var WATERMARK_URL = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/MyWarmUpMix.mp3';
-var WATERMARK_INTERVAL = 60;   // seconds between watermark hits
-var WATERMARK_VOLUME   = 0.45; // relative to mix volume
+var WATERMARK_INTERVAL = 60;
+var WATERMARK_VOLUME   = 0.45;
 
 // ── Audio engine state ────────────────────────────────────────────────────────
 var audioCtx        = null;
 var mixBuffer       = null;
 var watermarkBuffer = null;
 var mixSource       = null;
-var audioStartTime  = 0;   // audioCtx.currentTime when playback began
-var pauseOffset     = 0;   // seconds into the mix when paused
+var audioStartTime  = 0;
+var pauseOffset     = 0;
 var audioPlaying    = false;
 var watermarkTimers = [];
 var rafId           = null;
@@ -77,16 +77,7 @@ function fmtTime(s) {
   s = Math.max(0, Math.floor(s));
   var m = Math.floor(s / 60);
   var sec = s % 60;
-  return m + ':' + String(sec).padStart('0', 2);
-}
-
-// padStart polyfill for older browsers
-if (!String.prototype.padStart) {
-  String.prototype.padStart = function(len, fill) {
-    var s = String(this);
-    while (s.length < len) s = fill + s;
-    return s;
-  };
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
 }
 
 function showToast(msg) {
@@ -97,7 +88,7 @@ function showToast(msg) {
   setTimeout(function() { t.classList.remove('show'); }, 3500);
 }
 
-// ── Web Audio: load both files ────────────────────────────────────────────────
+// ── Web Audio: load buffers ───────────────────────────────────────────────────
 function loadAudioBuffer(url, cb) {
   fetch(url)
     .then(function(r) { return r.arrayBuffer(); })
@@ -113,18 +104,12 @@ function initAudioContext() {
 
 function ensureBuffersLoaded(cb) {
   initAudioContext();
-
-  // Resume suspended context (required after user gesture on some browsers)
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-
+  if (audioCtx.state === 'suspended') audioCtx.resume();
   if (mixBuffer && watermarkBuffer) { cb(); return; }
 
-  // Show loading state
   var btn = document.getElementById('previewBtn');
-  if (btn) btn.classList.add('loading');
   var timeEl = document.getElementById('progTime');
+  if (btn) btn.classList.add('loading');
   if (timeEl) timeEl.textContent = '…';
 
   var loaded = 0;
@@ -147,7 +132,7 @@ function ensureBuffersLoaded(cb) {
   if (!watermarkBuffer) loadAudioBuffer(WATERMARK_URL,  function(err, buf) { if (!err) watermarkBuffer = buf; onLoad(err); });
 }
 
-// ── Watermark scheduling ──────────────────────────────────────────────────────
+// ── Watermark ─────────────────────────────────────────────────────────────────
 function playWatermarkHit() {
   if (!audioCtx || !watermarkBuffer) return;
   var gain = audioCtx.createGain();
@@ -178,15 +163,13 @@ function clearWatermarkTimers() {
   watermarkTimers = [];
 }
 
-// ── Playback control ──────────────────────────────────────────────────────────
+// ── Playback ──────────────────────────────────────────────────────────────────
 function startAudioPlayback(offset) {
   mixSource = audioCtx.createBufferSource();
   mixSource.buffer = mixBuffer;
   mixSource.connect(audioCtx.destination);
   mixSource.start(0, offset);
-  mixSource.onended = function() {
-    if (audioPlaying) stopAudioPlayback();
-  };
+  mixSource.onended = function() { if (audioPlaying) stopAudioPlayback(); };
   audioStartTime = audioCtx.currentTime - offset;
   audioPlaying = true;
   scheduleWatermarks(offset);
@@ -205,48 +188,40 @@ function stopAudioPlayback() {
   audioPlaying = false;
 }
 
-// ── Progress bar ticker ───────────────────────────────────────────────────────
 function tickProgress() {
   if (!audioPlaying || !audioCtx || !mixBuffer) return;
   var elapsed = audioCtx.currentTime - audioStartTime;
   var duration = mixBuffer.duration;
   var pct = Math.min((elapsed / duration) * 100, 100);
-
   var bar = document.getElementById('progBar');
   var timeEl = document.getElementById('progTime');
   if (bar) bar.value = pct;
   if (timeEl) timeEl.textContent = fmtTime(elapsed);
-
   if (elapsed < duration) {
     rafId = requestAnimationFrame(tickProgress);
   } else {
-    // Mix ended
     resetPlayer();
   }
 }
 
-// ── Public: toggle preview (called by existing onclick) ───────────────────────
+// ── togglePreview / seekTo ────────────────────────────────────────────────────
 function togglePreview() {
   if (!audioPlaying) {
-    // START
     ensureBuffersLoaded(function() {
       startAudioPlayback(pauseOffset);
       document.getElementById('previewBtn').classList.add('playing');
       setNowPlaying(currentMixId, true);
     });
   } else {
-    // PAUSE
     stopAudioPlayback();
     document.getElementById('previewBtn').classList.remove('playing');
     setNowPlaying(currentMixId, false);
   }
 }
 
-// ── Public: seek (called by existing oninput on progBar) ─────────────────────
 function seekTo(v) {
   if (!mixBuffer) return;
-  var pct = parseFloat(v) / 100;
-  var seekPos = pct * mixBuffer.duration;
+  var seekPos = (parseFloat(v) / 100) * mixBuffer.duration;
   pauseOffset = seekPos;
   if (audioPlaying) {
     stopAudioPlayback();
@@ -258,7 +233,6 @@ function seekTo(v) {
   if (timeEl) timeEl.textContent = fmtTime(seekPos);
 }
 
-// ── Reset player (called on modal close / openMix) ───────────────────────────
 function resetPlayer() {
   cancelAnimationFrame(rafId);
   if (audioPlaying) stopAudioPlayback();
@@ -273,7 +247,7 @@ function resetPlayer() {
   if (currentMixId) setNowPlaying(currentMixId, false);
 }
 
-// ── UI helpers (unchanged from original) ────────────────────────────────────
+// ── UI ────────────────────────────────────────────────────────────────────────
 function mixCardHTML(m) {
   var s = getSeries(m.series);
   return '<div class="mix-card" id="card-' + m.id + '" onclick="openMix(' + m.id + ')">' +
@@ -403,7 +377,6 @@ function handleContact() {
   if (!name) { showToast('Please enter your name.'); document.getElementById('ct-name').focus(); return; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please enter a valid email address.'); document.getElementById('ct-email').focus(); return; }
   if (!msg) { showToast('Please enter a message.'); document.getElementById('ct-message').focus(); return; }
-
   fetch('https://formspree.io/f/xqejknpv', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -423,7 +396,6 @@ function handleContact() {
   .catch(function() { showToast('Something went wrong. Please try again.'); });
 }
 
-// ── Modal open/close ──────────────────────────────────────────────────────────
 var currentMixId = null;
 
 function openMix(id) {
