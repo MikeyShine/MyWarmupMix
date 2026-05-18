@@ -1,3 +1,4 @@
+// v2
 var SERIES = [
   { id:'sax',      icon:'🎷', name:'Sax Series',        color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-sax.png' },
   { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series',     color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-hiphop.png' },
