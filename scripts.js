@@ -270,7 +270,6 @@ function mixCardHTML(m) {
   return '<div class="mix-card" id="card-' + m.id + '" onclick="openMix(' + m.id + ')">' +
     '<div class="mix-art" style="' + artStyle + '">' +
       artInner +
-      '<div class="mix-series-badge" style="background:' + s.accent + '22;color:' + s.accent + ';border:1px solid ' + s.accent + '44;">' + s.name + '</div>' +
       '<div class="now-playing-indicator"><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div></div>' +
       '<div class="mix-play-overlay"><div class="play-circle"><svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div></div>' +
     '</div>' +
