@@ -37,7 +37,7 @@ nav { display: flex; flex-direction: column; align-items: center; justify-conten
 .spotlight-title { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
 .spotlight-link { font-size: 13px; color: var(--accent); cursor: pointer; text-decoration: none; }
 .spotlight-link:hover { text-decoration: underline; }
-.spotlight-desc { font-size: 14px; color: var(--text2); margin-bottom: 2rem; max-width: 600px; }
+.spotlight-desc { font-size: 14px; color: var(--text2); margin-bottom: 2rem; max-width: 100%; }
 
 /* EVERYTHING ELSE */
 .else-section { max-width: 1120px; margin: 0 auto; padding: 3rem 2rem; }
