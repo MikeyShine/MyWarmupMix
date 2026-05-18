@@ -47,8 +47,7 @@
   .nav-links { display: flex; gap: 1.5rem; align-items: center; }
   .nav-links a { color: var(--text2); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.15s; }
   .nav-links a:hover { color: var(--text); }
-  .nav-cta { background: var(--accent) !important; color: #000 !important; padding: 6px 16px; border-radius: 6px; font-weight: 600; font-size: 13px !important; }
-  .nav-cta:hover { background: var(--accent2) !important; }
+  .nav-links a.active { color: var(--accent); font-weight: 600; }
 
   .page { display: none; }
   .page.active { display: block; }
@@ -287,12 +286,11 @@
     <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:110px;width:auto;">
   </div>
   <div class="nav-links">
-    <a onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Browse</a>
-    <a onclick="showPage('custom')">Custom Mix</a>
-    <a onclick="showPage('about')">About</a>
-    <a onclick="showPage('contact')">Contact</a>
-    <a onclick="showPage('faq')">FAQ</a>
-    <a class="nav-cta" onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Shop Mixes</a>
+    <a id="nav-home" onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Shop Mixes</a>
+    <a id="nav-custom" onclick="showPage('custom')">Custom Mix</a>
+    <a id="nav-about" onclick="showPage('about')">About</a>
+    <a id="nav-contact" onclick="showPage('contact')">Contact</a>
+    <a id="nav-faq" onclick="showPage('faq')">FAQ</a>
   </div>
 </nav>
 
@@ -652,6 +650,9 @@ function showPage(id) {
   window.scrollTo(0,0);
   var titles = { 'home':'MyWarmupMix.com — Premium DJ Mixes for Every Occasion', 'custom':'Request a Custom Mix — MyWarmupMix.com', 'about':'About Us — MyWarmupMix.com', 'contact':'Contact — MyWarmupMix.com', 'faq':'FAQ — MyWarmupMix.com', 'terms':'Terms of Service — MyWarmupMix.com', 'privacy':'Privacy Policy — MyWarmupMix.com', 'dmca':'DMCA Policy — MyWarmupMix.com' };
   document.title = titles[id] || 'MyWarmupMix.com';
+  document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
+  var map = { 'home':'nav-home', 'custom':'nav-custom', 'about':'nav-about', 'contact':'nav-contact', 'faq':'nav-faq' };
+  if(map[id]) document.getElementById(map[id]).classList.add('active');
 }
 function showLegalPage(id) { showPage(id); }
 
