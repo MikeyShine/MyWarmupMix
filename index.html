@@ -47,7 +47,7 @@
     --bg: #0a0a0b; --bg2: #111114; --bg3: #18181c; --bg4: #222228;
     --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.15);
     --text: #f0eeeb; --text2: #a09e9a; --text3: #6a6866;
-    --accent: #c9a84c; --accent2: #a07830; --accent-dim: rgba(201,168,76,0.12);
+    --accent: #f58a13; --accent2: #c46e0a; --accent-dim: rgba(245,138,19,0.12);
     --radius: 10px; --radius-lg: 14px;
   }
   body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
@@ -286,15 +286,8 @@
 <body>
 
 <nav>
-  <div class="logo" onclick="showPage('home')">
-    <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
-      <circle cx="21" cy="21" r="19" fill="none" stroke="#c9a84c" stroke-width="2"/>
-      <circle cx="21" cy="21" r="13" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
-      <circle cx="21" cy="21" r="7" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.25"/>
-      <circle cx="21" cy="21" r="3" fill="#c9a84c"/>
-      <polygon points="18,17 18,25 27,21" fill="#c9a84c" opacity="0.85"/>
-    </svg>
-    <span><span style="color:var(--accent)">My</span><span style="color:var(--text)">WarmupMix</span><span style="color:var(--text3);font-size:28px;font-weight:400">.com</span></span>
+  <div class="logo" onclick="showPage('home')" style="display:flex;align-items:center;cursor:pointer;">
+    <img src="https://raw.githubusercontent.com/MikeyShine/MyWarmupMix/main/MyWarmupMix.png" alt="MyWarmupMix.com" style="height:56px;width:auto;">
   </div>
   <div class="nav-links">
     <a onclick="showPage('home'); setTimeout(function(){ document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'}); }, 50)">Browse</a>
