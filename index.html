@@ -59,10 +59,10 @@
   .hero h1 em { font-style: normal; color: var(--accent); }
   .hero p { color: var(--text2); font-size: 17px; max-width: 580px; margin: 0 auto 2.5rem; }
   .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary { background: var(--accent); color: #000; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
-  .btn-primary:hover { background: var(--accent2); }
+  .btn-primary { background: transparent; color: var(--text); border: 1px solid var(--border2); padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+  .btn-primary:hover { background: var(--accent); color: #000; border-color: var(--accent); }
   .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
-  .btn-outline:hover { background: var(--bg3); }
+  .btn-outline:hover { background: var(--accent); color: #000; border-color: var(--accent); }
 
   /* STATS */
   .stats { display: flex; justify-content: center; gap: 3rem; padding: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg2); flex-wrap: wrap; }
@@ -163,7 +163,7 @@
   .doc-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text3); cursor: pointer; margin-bottom: 2rem; transition: color 0.15s; }
   .doc-back:hover { color: var(--text); }
   .about-hero { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; margin-bottom: 2rem; text-align: center; }
-  .about-hero h2 { font-size: 30px; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; color: var(--accent); }
+  .about-hero h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -1px; line-height: 1.15; }
   .about-hero p { font-size: 15px; color: var(--text2); max-width: 480px; margin: 0 auto; }
   .about-pillars { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 2rem 0; }
   .pillar { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
@@ -303,7 +303,7 @@
   <main>
   <div class="hero">
     <div class="hero-tag">Situational Soundtracks · Built by a DJ</div>
-    <h1>The right mix for<br><em>every moment</em></h1>
+    <h1>The right mix<br><em>for every moment</em></h1>
     <p>Warm-up mixes, cookout vibes, late-night lounges, and more. Preview every mix before you buy. Built by a DJ, for every occasion.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('warmup-spotlight').scrollIntoView({behavior:'smooth'})">Browse the Library</button>
@@ -469,7 +469,7 @@
   <div class="doc-page">
     <div class="doc-back" onclick="showPage('home')">← Back to home</div>
     <div class="about-hero">
-      <h2>Music isn't background noise.<br>It's the moment itself.</h2>
+      <h2><span style="color:var(--text)">Music isn't background noise.</span><br><em style="font-style:normal;color:var(--accent)">It's the moment itself.</em></h2>
       <p>We built MyWarmupMix.com because we believe the right mix can transform any occasion — and that passion for music is what makes all the difference.</p>
     </div>
     <h2>Our story</h2>
