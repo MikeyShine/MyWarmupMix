@@ -56,10 +56,11 @@ nav { display: flex; flex-direction: column; align-items: center; justify-conten
 .mix-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: transform 0.15s, border-color 0.15s; position: relative; }
 .mix-card:hover { transform: translateY(-3px); border-color: var(--border2); }
 .mix-card.now-playing { border-color: var(--accent); }
-.mix-art { aspect-ratio: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.mix-art { aspect-ratio: 1; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-size: cover; background-position: center; }
 .mix-art-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 1; }
 .mix-art-icon { font-size: 3.5rem; line-height: 1; }
 .mix-art-title { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center; padding: 0 12px; }
+.mix-art-vol { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 3rem; font-weight: 900; color: var(--accent); letter-spacing: -2px; text-shadow: 0 2px 20px rgba(0,0,0,0.8); line-height: 1; z-index: 2; }
 .mix-play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
 .mix-card:hover .mix-play-overlay { opacity: 1; }
 .play-circle { width: 52px; height: 52px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
