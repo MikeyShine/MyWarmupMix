@@ -1,12 +1,10 @@
 var SERIES = [
-  { id:'sax',      icon:'🎷', name:'Sax Series',     color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a' },
-  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series', color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13' },
-  { id:'function', icon:'🔥', name:'The Function',   color:'#2d1a12', accent:'#e8723a', labelColor:'#e8723a' },
-  { id:'open',     icon:'🎚️', name:'Open Format',    color:'#12121a', accent:'#a07be8', labelColor:'#a07be8' },
-  { id:'warmup',   icon:'⚡', name:'Warm-Up Series', color:'#1a1a2e', accent:'#7b9ce8', labelColor:'#7b9ce8' }
+  { id:'sax',      icon:'🎷', name:'Sax Series',     color:'#1a2e26', accent:'#3aaa7a', labelColor:'#3aaa7a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-sax.png' },
+  { id:'hiphop',   icon:'🎤', name:'Hip-Hop Series', color:'#1a1a0e', accent:'#f58a13', labelColor:'#f58a13', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-hiphop.png' },
+  { id:'function', icon:'🔥', name:'The Function',   color:'#2d1a12', accent:'#e8723a', labelColor:'#e8723a', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-function.png' },
+  { id:'open',     icon:'🎚️', name:'Open Format',    color:'#12121a', accent:'#a07be8', labelColor:'#a07be8', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-open.png' },
+  { id:'warmup',   icon:'⚡', name:'Warm-Up Series', color:'#1a1a2e', accent:'#7b9ce8', labelColor:'#7b9ce8', art:'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/art-warmupmix.png' }
 ];
-
-var WARMUP_ART_URL = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/image%20-%20WarmUpMix.png';
 
 var MIXES = [
   { id:1,  series:'sax',      title:'Max the Sax',         tags:['Pure Sax','High Energy','95–110 BPM','60 Min'],       price:'24.99', tracks:['DMX – Party Up','Usher – Yeah!','Jay-Z – Empire State of Mind','Kanye West – Gold Digger','Beyoncé – Crazy in Love','Mary J. Blige – Real Love','Biggie – Juicy','Ne-Yo – So Sick','Chris Brown – Forever','R. Kelly – Ignition','Alicia Keys – No One','Drake – One Dance'] },
@@ -255,15 +253,25 @@ function mixCardHTML(m) {
   var isWarmup = m.series === 'warmup';
   var volNum = isWarmup ? m.title.replace(/.*Vol\.\s*/, '') : '';
   var artStyle = 'background:' + s.color + ';';
-  if (isWarmup) artStyle += 'background-image:url(' + WARMUP_ART_URL + ');';
+  if (s.art) artStyle += 'background-image:url(' + s.art + ');';
+
+  var artInner = '';
+  if (isWarmup) {
+    artInner =
+      '<div class="mix-art-vol">' +
+        '<div class="mix-art-vol-label">Warm-Up Mix</div>' +
+        '<div class="mix-art-vol-num">Vol. ' + volNum + '</div>' +
+      '</div>';
+  } else {
+    artInner =
+      '<div class="mix-art-inner">' +
+        '<div class="mix-art-title-overlay">' + m.title + '</div>' +
+      '</div>';
+  }
 
   return '<div class="mix-card" id="card-' + m.id + '" onclick="openMix(' + m.id + ')">' +
     '<div class="mix-art" style="' + artStyle + '">' +
-      (isWarmup ? '<div class="mix-art-vol">Vol. ' + volNum + '</div>' : '') +
-      '<div class="mix-art-inner">' +
-        (!isWarmup ? '<div class="mix-art-icon">' + s.icon + '</div>' : '') +
-        (!isWarmup ? '<div class="mix-art-title">' + m.title + '</div>' : '') +
-      '</div>' +
+      artInner +
       '<div class="mix-series-badge" style="background:' + s.accent + '22;color:' + s.accent + ';border:1px solid ' + s.accent + '44;">' + s.name + '</div>' +
       '<div class="now-playing-indicator"><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div></div>' +
       '<div class="mix-play-overlay"><div class="play-circle"><svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div></div>' +
@@ -414,16 +422,17 @@ function openMix(id) {
   var m = null;
   for (var i = 0; i < MIXES.length; i++) if (MIXES[i].id === id) { m = MIXES[i]; break; }
   var s = getSeries(m.series);
-  document.getElementById('modalArt').style.background = s.color;
-  if (m.series === 'warmup') {
-    document.getElementById('modalArt').style.backgroundImage = 'url(' + WARMUP_ART_URL + ')';
-    document.getElementById('modalArt').style.backgroundSize = 'cover';
-    document.getElementById('modalArt').style.backgroundPosition = 'center';
+  var modalArt = document.getElementById('modalArt');
+  modalArt.style.background = s.color;
+  if (s.art) {
+    modalArt.style.backgroundImage = 'url(' + s.art + ')';
+    modalArt.style.backgroundSize = 'cover';
+    modalArt.style.backgroundPosition = 'center';
   } else {
-    document.getElementById('modalArt').style.backgroundImage = '';
+    modalArt.style.backgroundImage = '';
   }
   document.getElementById('modalIcon').textContent = m.series === 'warmup' ? '' : s.icon;
-  document.getElementById('modalArtSub').textContent = s.name;
+  document.getElementById('modalArtSub').textContent = m.series === 'warmup' ? '' : s.name;
   document.getElementById('modalSeriesLabel').textContent = s.name;
   document.getElementById('modalSeriesLabel').style.color = s.accent;
   document.getElementById('modalTitle').textContent = m.title;
