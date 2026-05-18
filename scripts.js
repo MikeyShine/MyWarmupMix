@@ -6,6 +6,8 @@ var SERIES = [
   { id:'warmup',   icon:'⚡', name:'Warm-Up Series', color:'#1a1a2e', accent:'#7b9ce8', labelColor:'#7b9ce8' }
 ];
 
+var WARMUP_ART_URL = 'https://pub-8a606f3e80df454aa140a9958d8abc6c.r2.dev/image%20-%20WarmUpMix.png';
+
 var MIXES = [
   { id:1,  series:'sax',      title:'Max the Sax',         tags:['Pure Sax','High Energy','95–110 BPM','60 Min'],       price:'24.99', tracks:['DMX – Party Up','Usher – Yeah!','Jay-Z – Empire State of Mind','Kanye West – Gold Digger','Beyoncé – Crazy in Love','Mary J. Blige – Real Love','Biggie – Juicy','Ne-Yo – So Sick','Chris Brown – Forever','R. Kelly – Ignition','Alicia Keys – No One','Drake – One Dance'] },
   { id:2,  series:'sax',      title:'Sax on the Beach',    tags:['Beachy','Feel-Good','90–105 BPM','60 Min'],           price:'24.99', tracks:['Kool & The Gang – Get Down on It','Earth Wind & Fire – September','Michael Jackson – Don\'t Stop \'Til You Get Enough','Stevie Wonder – Sir Duke','Lionel Richie – All Night Long','Average White Band – Pick Up the Pieces','Grover Washington Jr. – Just the Two of Us','George Benson – Give Me the Night'] },
@@ -23,7 +25,7 @@ var MIXES = [
   { id:14, series:'open',     title:'Cruise Control',      tags:['Smooth Blend','Any Occasion','90–110 BPM','60 Min'], price:'24.99', tracks:['Sade – Smooth Operator','Anita Baker – Caught Up in the Rapture','Luther Vandross – Never Too Much','Marvin Gaye – Let\'s Get It On','Al Green – Let\'s Stay Together','Barry White – Can\'t Get Enough of Your Love','Maze ft. Frankie Beverly – Before I Let Go'] },
   { id:15, series:'open',     title:'After Hours',         tags:['Late Night','Genre-Blending','85–100 BPM','60 Min'], price:'24.99', tracks:['The Weeknd – Blinding Lights','Drake – Passionfruit','Post Malone – Stay','SZA – The Weekend','Frank Ocean – Nights','6LACK – East Atlanta Love Letter','Bryson Tiller – Exchange','H.E.R. – Best Part','Jhené Aiko – Triggered'] },
   { id:16, series:'open',     title:'No Bad Vibes',        tags:['Feel-Good','Wide Appeal','95–115 BPM','60 Min'],     price:'24.99', tracks:['Pharrell – Happy','Justin Timberlake – Can\'t Stop the Feeling','Bruno Mars – Uptown Funk','Lizzo – Good as Hell','Anderson .Paak – Come Down','Childish Gambino – Redbone','Leon Bridges – Coming Home','Surfaces – Sunday Best','Bill Withers – Lovely Day','Kirk Franklin – Stomp'] },
-  { id:17, series:'warmup',   title:'Warm-Up Mix Vol. 1',  tags:['High Energy','Open Format','30 Min'],                price:'24.99', tracks:['Black Eyed Peas – Let\'s Get It Started','Kanye West – Stronger','Eminem – Lose Yourself','Migos – Fight Night','Daddy Yankee – Gasolina','Post Malone & Swae Lee – Sunflower','Bruno Mars & Cardi B – Finesse','Usher & Ludacris – Yeah','Usher & Pitbull – DJ Got Us Fallin In Love','Glass Animals – Heat Waves','Rihanna – Please Don\'t Stop the Music','Dua Lipa – Training Season','Justin Bieber & Nicki Minaj – Beauty and a Beat','Jennifer Lopez & Pitbull – On the Floor','Ke$ha & Pitbull – Timber','Cobra Starship & Sabi – You Make Me Feel','Rihanna – Shut Up and Drive','Flo-Rida & T-Pain – Low','Fergie & Will.I.Am – Fergalicious','Rihanna – We Found Love','Katy Perry & Juicy J – Dark Horse','Flo-Rida & Sage The Gemini – GDFR','Waka Flocka & Roscoe Dash – No Hands','Drake – Trophies','Andy Mineo & Lecrae – Coming In Hot','Jay-Z & Rihanna & Kanye West – Run This Town','T.I. – Bring Em Out'] },  
+  { id:17, series:'warmup',   title:'Warm-Up Mix Vol. 1',  tags:['High Energy','Open Format','30 Min'],                price:'24.99', tracks:['Black Eyed Peas – Let\'s Get It Started','Kanye West – Stronger','Eminem – Lose Yourself','Migos – Fight Night','Daddy Yankee – Gasolina','Post Malone & Swae Lee – Sunflower','Bruno Mars & Cardi B – Finesse','Usher & Ludacris – Yeah','Usher & Pitbull – DJ Got Us Fallin In Love','Glass Animals – Heat Waves','Rihanna – Please Don\'t Stop the Music','Dua Lipa – Training Season','Justin Bieber & Nicki Minaj – Beauty and a Beat','Jennifer Lopez & Pitbull – On the Floor','Ke$ha & Pitbull – Timber','Cobra Starship & Sabi – You Make Me Feel','Rihanna – Shut Up and Drive','Flo-Rida & T-Pain – Low','Fergie & Will.I.Am – Fergalicious','Rihanna – We Found Love','Katy Perry & Juicy J – Dark Horse','Flo-Rida & Sage The Gemini – GDFR','Waka Flocka & Roscoe Dash – No Hands','Drake – Trophies','Andy Mineo & Lecrae – Coming In Hot','Jay-Z & Rihanna & Kanye West – Run This Town','T.I. – Bring Em Out'] },
   { id:18, series:'warmup',   title:'Warm-Up Mix Vol. 2',  tags:['High Energy','Open Format','30 Min'],               price:'24.99', tracks:['Cardi B – Bodak Yellow','Nicki Minaj – Monster','Lil Baby – Woah','Gunna – Speed It Up','Roddy Ricch – The Box','DaBaby – Suge','Polo G – Pop Out','Juice WRLD – Lucid Dreams','NBA YoungBoy – Outside Today','Lil Durk – India'] },
   { id:19, series:'warmup',   title:'Warm-Up Mix Vol. 3',  tags:['High Energy','Open Format','30 Min'],               price:'24.99', tracks:['Post Malone – Rockstar','Megan Thee Stallion – Savage','Jack Harlow – What\'s Poppin','24kGoldn – Mood','Iann Dior – Sick and Tired','Olivia Rodrigo – good 4 u','Doja Cat – Say So','SZA – Good Days','Dua Lipa – Levitating'] },
   { id:20, series:'warmup',   title:'Warm-Up Mix Vol. 4',  tags:['High Energy','Open Format','30 Min'],               price:'24.99', tracks:['Tyler the Creator – EARFQUAKE','Frank Ocean – Nikes','Childish Gambino – This Is America','Anderson .Paak – Tints','Thundercat – Dragonball Durag','Steve Lacy – Bad Habit','Brent Faiyaz – Wasting Time','Lucky Daye – Roll Some Mo','Giveon – Heartbreak Anniversary','Silk Sonic – Leave the Door Open'] }
@@ -250,9 +252,18 @@ function resetPlayer() {
 // ── UI ────────────────────────────────────────────────────────────────────────
 function mixCardHTML(m) {
   var s = getSeries(m.series);
+  var isWarmup = m.series === 'warmup';
+  var volNum = isWarmup ? m.title.replace(/.*Vol\.\s*/, '') : '';
+  var artStyle = 'background:' + s.color + ';';
+  if (isWarmup) artStyle += 'background-image:url(' + WARMUP_ART_URL + ');';
+
   return '<div class="mix-card" id="card-' + m.id + '" onclick="openMix(' + m.id + ')">' +
-    '<div class="mix-art" style="background:' + s.color + ';">' +
-      '<div class="mix-art-inner"><div class="mix-art-icon">' + s.icon + '</div><div class="mix-art-title">' + m.title + '</div></div>' +
+    '<div class="mix-art" style="' + artStyle + '">' +
+      (isWarmup ? '<div class="mix-art-vol">Vol. ' + volNum + '</div>' : '') +
+      '<div class="mix-art-inner">' +
+        (!isWarmup ? '<div class="mix-art-icon">' + s.icon + '</div>' : '') +
+        (!isWarmup ? '<div class="mix-art-title">' + m.title + '</div>' : '') +
+      '</div>' +
       '<div class="mix-series-badge" style="background:' + s.accent + '22;color:' + s.accent + ';border:1px solid ' + s.accent + '44;">' + s.name + '</div>' +
       '<div class="now-playing-indicator"><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div><div class="np-bar"></div></div>' +
       '<div class="mix-play-overlay"><div class="play-circle"><svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div></div>' +
@@ -404,7 +415,14 @@ function openMix(id) {
   for (var i = 0; i < MIXES.length; i++) if (MIXES[i].id === id) { m = MIXES[i]; break; }
   var s = getSeries(m.series);
   document.getElementById('modalArt').style.background = s.color;
-  document.getElementById('modalIcon').textContent = s.icon;
+  if (m.series === 'warmup') {
+    document.getElementById('modalArt').style.backgroundImage = 'url(' + WARMUP_ART_URL + ')';
+    document.getElementById('modalArt').style.backgroundSize = 'cover';
+    document.getElementById('modalArt').style.backgroundPosition = 'center';
+  } else {
+    document.getElementById('modalArt').style.backgroundImage = '';
+  }
+  document.getElementById('modalIcon').textContent = m.series === 'warmup' ? '' : s.icon;
   document.getElementById('modalArtSub').textContent = s.name;
   document.getElementById('modalSeriesLabel').textContent = s.name;
   document.getElementById('modalSeriesLabel').style.color = s.accent;
