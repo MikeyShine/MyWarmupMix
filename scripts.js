@@ -187,16 +187,29 @@ function highlight(id) {
 function handleContact() {
   var name = document.getElementById('ct-name').value.trim();
   var email = document.getElementById('ct-email').value.trim();
+  var phone = document.getElementById('ct-phone') ? document.getElementById('ct-phone').value.trim() : '';
   var msg = document.getElementById('ct-message').value.trim();
   if (!name) { showToast('Please enter your name.'); document.getElementById('ct-name').focus(); return; }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('Please enter a valid email address.'); document.getElementById('ct-email').focus(); return; }
   if (!msg) { showToast('Please enter a message.'); document.getElementById('ct-message').focus(); return; }
-  showToast('Message sent! We\'ll be in touch within 24–48 hours.');
-  document.getElementById('ct-name').value = '';
-  document.getElementById('ct-email').value = '';
-  var ph = document.getElementById('ct-phone');
-  if (ph) ph.value = '';
-  document.getElementById('ct-message').value = '';
+
+  fetch('https://formspree.io/f/xqejknpv', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, phone: phone, message: msg })
+  })
+  .then(function(res) {
+    if (res.ok) {
+      showToast('Message sent! We\'ll be in touch within 24–48 hours.');
+      document.getElementById('ct-name').value = '';
+      document.getElementById('ct-email').value = '';
+      if (document.getElementById('ct-phone')) document.getElementById('ct-phone').value = '';
+      document.getElementById('ct-message').value = '';
+    } else {
+      showToast('Something went wrong. Please try again.');
+    }
+  })
+  .catch(function() { showToast('Something went wrong. Please try again.'); });
 }
 
 var playing = false, timer = null, prog = 0, currentMixId = null;
@@ -289,7 +302,6 @@ function toggleBuy() {
 
 function handleBuy() { showToast('Stripe checkout coming soon — stay tuned!'); }
 
-// Nav highlight based on current page
 function setActiveNav() {
   var path = window.location.pathname;
   var map = {
