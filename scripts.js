@@ -447,6 +447,8 @@ function openMix(id) {
   document.getElementById('licenseSel').value = '24.99';
   document.getElementById('buyPriceSpan').textContent = '24.99';
   document.getElementById('licenseDesc').textContent = LICENSE_DESCS['24.99'];
+  // Pre-made mixes have one price only: hide the dropdown element itself (not its parent)
+  document.getElementById('licenseSel').style.display = 'none';
   document.getElementById('overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
