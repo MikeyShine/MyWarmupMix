@@ -104,10 +104,10 @@
   </div>
 
   <div class="consent-row">
-    <input type="checkbox" id="cm-consent">
+    <input type="checkbox" id="cm-consent" onchange="document.getElementById('cm-pay-btn').disabled=!this.checked;">
     <label for="cm-consent">I confirm that I own, control, or have obtained all rights, licenses, and permissions necessary for MyWarmUpMix.com to use the recordings and musical works in my submitted or selected tracklist for the requested mixing service. I understand that MyWarmUpMix.com is providing a creative audio-mixing service and does not sell or license the underlying copyrighted recordings.</label>
   </div>
-  <button class="btn-pay" onclick="handleCustomPay()">Pay Now — $<span id="pay-total">74.99</span></button>
+  <button class="btn-pay" id="cm-pay-btn" onclick="handleCustomPay()" disabled>Pay Now — $<span id="pay-total">74.99</span></button>
   <div class="secure-note">🔒 Secure checkout via Stripe · You'll receive an email confirmation upon payment</div>
 </div>
 
